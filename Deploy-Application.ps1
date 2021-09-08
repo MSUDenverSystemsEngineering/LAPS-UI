@@ -141,7 +141,7 @@ Try {
 		}
 
 		## <Perform Installation tasks here>
-		$exitCode = Execute-MSI -Action "Install" -Path "$dirFiles\LAPS.x64.msi" -Parameters "ADDLOCAL=Management,Management.UI ALLUSERS=1 /QN" -PassThru
+		$exitCode = Execute-MSI -Action "Install" -Path "$dirFiles\LAPS.x64.msi" -Parameters "ADDLOCAL=Management,Management.UI ALLUSERS=1 /QN" -SkipMSIAlreadyInstalledCheck $true -PassThru
 		If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 		##*===============================================
